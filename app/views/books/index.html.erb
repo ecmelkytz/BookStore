@@ -1,0 +1,22 @@
+<% @books.each do |book| %>
+  <div class="panel panel-default">
+    <div class="panel-body" style="background-color:#eaeaea">
+      <div class="col-sm-3">
+        <% if book.image.present? %>
+          <%= image_tag(book.image, size: "80x80") %>
+        <% else %>
+          <%= image_tag("book.png", size: "80x80") %>
+        <% end %>
+      </div>
+      <div class="col-sm-8">
+        <h2><%= link_to book.title, book_path(book.id) %> <small>by <%= book.author %></small></h2>
+      <%= link_to 'Show', book %>
+      <%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %>
+       </div>
+      <div class="col-sm-2"><center><%= book.price  %> <i class="fa fa-try"></i> </center></div>
+    </div>
+  </div>
+<% end %>
+
+
+<%= link_to 'New Book', new_book_path %>
